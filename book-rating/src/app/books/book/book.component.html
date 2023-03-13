@@ -5,13 +5,13 @@
     <div class="card-title">
       <h2>
         {{ book.title }}
-        <span class="badge bg-secondary">{{ book.rating }}</span>
+        <br-rating [rating]="book.rating"></br-rating>
       </h2>
     </div>
     <p>{{ book.description }}</p>
     <p>Preis: {{ book.price }}</p>
 
-    <button type="button" class="btn-green" (click)="doRateUp()"> + </button>
-    <button type="button" class="btn-red" (click)="doRateDown()"> – </button>
+    <button type="button" class="btn-green" [disabled]="book.rating >= 5" (click)="doRateUp()"> + </button>
+    <button type="button" class="btn-red" [disabled]="book.rating <= 1" (click)="doRateDown()"> – </button>
   </div>
 </div>
