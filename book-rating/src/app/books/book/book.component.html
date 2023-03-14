@@ -9,7 +9,12 @@
       </h2>
     </div>
     <p>{{ book.description }}</p>
-    <p>Preis: {{ book.price }}</p>
+    <p>Preis: {{ book.price | currency:'EUR' }}</p>
+
+    <p>
+      <ng-container *ngFor="let a of book.authors; last as l">{{ a }}<ng-container *ngIf="!l">, </ng-container></ng-container>
+    </p>
+    <!--{{ book.authors.join(', ') }}-->
 
     <button type="button" class="btn-green" [disabled]="book.rating >= 5" (click)="doRateUp()"> + </button>
     <button type="button" class="btn-red" [disabled]="book.rating <= 1" (click)="doRateDown()"> – </button>

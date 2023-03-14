@@ -17,14 +17,16 @@ export class DashboardComponent {
         title: 'Angular',
         description: 'Das große Praxisbuch',
         rating: 5,
-        price: 42.90
+        price: 42.90,
+        authors: ['Ferdinand Malcher', 'Danny Koppenhagen', 'Johannes Hoppe']
       },
       {
         isbn: '456',
         title: 'Vue.js',
         description: 'Das andere Framework',
         rating: 3,
-        price: 36.90
+        price: 36.90,
+        authors: ['Fabian Deitelhoff']
       }
     ];
   }
