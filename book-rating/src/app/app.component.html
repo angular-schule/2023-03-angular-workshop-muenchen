@@ -1,10 +1,25 @@
 <div class="container">
   <h1>{{ title }}</h1>
 
-  <br-dashboard></br-dashboard>
+  <router-outlet></router-outlet>
 
   <hr>
   <p>
     Datum: {{ myDate | date:'medium' }}
   </p>
 </div>
+
+
+<!--
+TODO
+  - Root-URL: Redirect
+  - Links
+    - von Dashboard zu Detailseite
+    - von Detailseite zu Dashboard
+  - (Seitentitel)
+  - Detailseite
+    - ISBN aus der URL auslesen
+    - getSingle() HTTP
+    - anzeigen
+
+-->
