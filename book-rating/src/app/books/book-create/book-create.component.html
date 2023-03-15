@@ -2,7 +2,7 @@
 
 <hr>
 
-<form [formGroup]="bookForm">
+<form [formGroup]="bookForm" (ngSubmit)="submitForm()">
   <div class="form-group">
     <label for="isbnInput">ISBN</label>
     <input type="text" class="form-control" id="isbnInput" formControlName="isbn">
