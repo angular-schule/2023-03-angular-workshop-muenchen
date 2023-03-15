@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { map, mergeMap, switchMap } from 'rxjs';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
 
@@ -17,11 +18,12 @@ export class BookDetailsComponent {
     // const isbn = this.route.snapshot.paramMap.get('isbn'); // path: 'books/:isbn'
 
     // PUSH
-    this.route.paramMap.subscribe(params => {
-      const isbn = params.get('isbn')!; // Non-Null Assertion (böse!)
-      this.bookStoreService.getSingle(isbn).subscribe(book => {
-        this.book = book;
-      });
+    this.route.paramMap.pipe(
+      map(params => params.get('isbn')!),
+      switchMap(isbn => this.bookStoreService.getSingle(isbn))
+    ).subscribe(book => {
+      this.book = book;
     });
+
   }
 }
