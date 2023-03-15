@@ -13,9 +13,7 @@ export class DashboardComponent {
   // Alternativ: bs = inject(BookStoreService);
 
   constructor(private bookRatingService: BookRatingService, private bookStoreService: BookStoreService) {
-    this.bookStoreService.getAll().subscribe((books) => {
-      this.books = books;
-    });
+    this.refreshlist();
   }
 
   doRateUp(book: Book) {
@@ -26,6 +24,21 @@ export class DashboardComponent {
   doRateDown(book: Book) {
     const ratedBook = this.bookRatingService.rateDown(book);
     this.updateList(ratedBook);
+  }
+
+  doDelete(isbn: string) {
+    this.bookStoreService.delete(isbn).subscribe(() => {
+      this.refreshlist();
+
+      // Alternative: lokal löschen
+      // this.books = this.books.filter(b => b.isbn !== isbn);
+    });
+  }
+
+  private refreshlist() {
+    this.bookStoreService.getAll().subscribe((books) => {
+      this.books = books;
+    });
   }
 
 

@@ -10,6 +10,7 @@ export class BookComponent {
   @Input() book?: Book;
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
+  @Output() delete = new EventEmitter<string>();
 
   doRateUp() {
     this.rateUp.emit(this.book);
@@ -17,5 +18,9 @@ export class BookComponent {
 
   doRateDown() {
     this.rateDown.emit(this.book);
+  }
+
+  doDelete() {
+    this.delete.emit(this.book?.isbn);
   }
 }

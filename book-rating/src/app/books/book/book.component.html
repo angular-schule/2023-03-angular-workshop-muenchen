@@ -18,6 +18,7 @@
 
     <button type="button" class="btn-green" [disabled]="book.rating >= 5" (click)="doRateUp()"> + </button>
     <button type="button" class="btn-red" [disabled]="book.rating <= 1" (click)="doRateDown()"> – </button>
+    <button type="button" class="btn-red" (click)="doDelete()"> Löschen </button>
 
     <!--<a routerLink="/books">Dashboard</a>-->
     <a [routerLink]="['/books', book.isbn]">Details</a>
