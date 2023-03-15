@@ -14,7 +14,7 @@ export class BookDetailsComponent {
 
   constructor(private route: ActivatedRoute, private bookStoreService: BookStoreService) {
     // PULL
-    // const isbn = this.route.snapshot.paramMap.get('isbn');
+    // const isbn = this.route.snapshot.paramMap.get('isbn'); // path: 'books/:isbn'
 
     // PUSH
     this.route.paramMap.subscribe(params => {
@@ -23,9 +23,5 @@ export class BookDetailsComponent {
         this.book = book;
       });
     });
-
-    // Aufgabe:
-    // - Buch abrufen (HTTP)
-    // - anzeigen (ganz simpel!)
   }
 }
