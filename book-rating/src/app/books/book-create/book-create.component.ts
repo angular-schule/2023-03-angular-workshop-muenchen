@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { debounceTime } from 'rxjs';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
 
@@ -35,7 +36,14 @@ export class BookCreateComponent {
     }),
   });
 
-  constructor(private bookStoreService: BookStoreService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private bookStoreService: BookStoreService, private router: Router, private route: ActivatedRoute) {
+
+    this.bookForm.controls.title.valueChanges.pipe(
+      debounceTime(1000)
+    ).subscribe(e => console.log(e))
+
+
+  }
 
   submitForm() {
     const newBook: Book = {
